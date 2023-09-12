@@ -1,14 +1,19 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class ClockController : MonoBehaviour
 {
     [SerializeField] private Transform hourHand;
     [SerializeField] private Transform minuteHand;
     [SerializeField] private Transform secondHand;
 
-    [SerializeField] private AudioClip tickSound;
-
+    private AudioSource tickSound;
     private float previousSecond = -1f;
+
+    private void Awake()
+    {
+        tickSound = GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
@@ -37,10 +42,7 @@ public class ClockController : MonoBehaviour
 
         if (currentSecond != previousSecond)
         {
-            if (tickSound != null)
-            {
-                AudioSource.PlayClipAtPoint(tickSound, transform.position);
-            }
+            tickSound.Play();
 
             previousSecond = currentSecond;
         }
