@@ -6,17 +6,37 @@
 [RequireComponent(typeof(ParticleSystem))]
 public class ToggleParticle : MonoBehaviour
 {
+    [SerializeField]
+    private bool playOnAwake = true;
+
     private ParticleSystem currentParticleSystem = null;
     private MonoBehaviour currentOwner = null;
 
     private void Awake()
     {
         currentParticleSystem = GetComponent<ParticleSystem>();
+
+        if(!playOnAwake)
+        {
+            Stop();
+        }
     }
 
     public void Play()
     {
         currentParticleSystem.Play();
+    }
+
+    public void Toggle()
+    {
+        if(currentParticleSystem.isPlaying)
+        {
+            Stop();
+        }
+        else
+        {
+            Play();
+        }
     }
 
     public void Stop()

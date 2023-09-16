@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(PlayQuickSound))]
 public class InteractableCollisionAudio : MonoBehaviour
 {
     [SerializeField]
@@ -9,10 +10,12 @@ public class InteractableCollisionAudio : MonoBehaviour
     private float minimumVelocity = 0.1f;
 
     private AudioSource audioSource;
+    private PlayQuickSound sound;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        sound = GetComponent<PlayQuickSound>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -24,8 +27,8 @@ public class InteractableCollisionAudio : MonoBehaviour
             // Scale the volume based on collision magnitude.
             float scaledVolume = collision.relativeVelocity.magnitude * volumeMultiplier;
             // Play the audio clip
-            audioSource.PlayOneShot(audioSource.clip, Mathf.Clamp01(scaledVolume));
+            sound.volume = scaledVolume;
+            sound.Play();
         }
     }
-
 }
