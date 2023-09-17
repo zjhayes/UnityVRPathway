@@ -65,12 +65,12 @@ PrefabInstance:
     - target: {fileID: 596202393900637246, guid: e724fedce11ac6a47be60863f095643c,
         type: 3}
       propertyPath: m_Name
-      value: TopHat Variant
+      value: TopHat
       objectReference: {fileID: 0}
     - target: {fileID: 596202393900637247, guid: e724fedce11ac6a47be60863f095643c,
         type: 3}
       propertyPath: m_InteractionLayers.m_Bits
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e724fedce11ac6a47be60863f095643c, type: 3}
